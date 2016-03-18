@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+
+       http://www.springframework.org/schema/context
+                      http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:component-scan base-package="com.oncore.middleware"></context:component-scan>
+    <import resource="spring-hibernate.xml"></import>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>
+                    classpath:hibernate-development.properties
+                </value>
+                <value>classpath:app-development.properties</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+        <property name="targetConnectionFactory" ref="pooledConnectionFactory"/>
+    </bean>
+    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+        <property name="connectionFactory" ref="targetConnectionFactory"/>
+        <property name="maxConnections" value="10"/>
+    </bean>
+    <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+    </bean>
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+    </bean>
+    <!--message queue used to create mapping and groovy files start-->
+    <bean id="fileCreatorDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>file_creator_destination</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="fileCreatorMessageListener"
+          class="com.oncore.middleware.jms.message.consumer.FileCreatorMessageListener"/>
+    <!-- 消息监听容器 -->
+    <bean id="fileCreatorMessageContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="fileCreatorDestination"/>
+        <property name="messageListener" ref="fileCreatorMessageListener"/>
+    </bean>
+    <!--message queue used to create mapping and groovy files end-->
+
+    <!--message queue used to create table start-->
+    <bean id="tableCreatorDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>table_creator_destination</value>
+        </constructor-arg>
+    </bean>
+    <bean id="tableCreatorMessageListener"
+          class="com.oncore.middleware.jms.message.consumer.TableCreatorMessageListener"/>
+    <!-- 消息监听容器 -->
+    <bean id="tableCreatorMessageContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="tableCreatorDestination"/>
+        <property name="messageListener" ref="tableCreatorMessageListener"/>
+    </bean>
+
+    <!--message queue used to create table end-->
+    <!--msg queue for create report template start-->
+
+    <bean id="reportTemplateMessageListener"
+          class="com.oncore.middleware.jms.message.consumer.ReportTemplateMessageListener">
+        <property name="upLoader" ref="aWSUploader"></property>
+    </bean>
+
+    <bean id="reportUploaderDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>report_uploader_destination</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="reportTemplateMessageContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="reportUploaderDestination"/>
+        <property name="messageListener" ref="reportTemplateMessageListener"/>
+    </bean>
+    <!--msg queue for create report template end-->
+</beans>

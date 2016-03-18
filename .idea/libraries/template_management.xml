@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="template-management">
+    <CLASSES>
+      <root url="file://$USER_HOME$/oncore-consulting/template-management" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/oncore-consulting/template-management/src/main/java" />
+      <root url="file://$USER_HOME$/oncore-consulting/template-management/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

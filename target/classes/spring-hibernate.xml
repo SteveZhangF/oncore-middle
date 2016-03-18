@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="sql" class="groovy.sql.Sql">
+        <constructor-arg ref="serverHibernateDataSource"/>
+    </bean>
+
+    <!--use c3p0 datasource-->
+    <bean id="serverHibernateDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <!-- MySQL5 -->
+        <property name="driverClass" value="${server.db.driverClassName}"/>
+        <property name="jdbcUrl" value="${server.db.url}"/>
+        <property name="user" value="${server.db.username}"/>
+        <property name="password" value="${server.db.password}"/>
+        <property name="maxPoolSize" value="${server.db.poolsize.max}"/>
+        <property name="minPoolSize" value="${server.db.poolsize.min}"/>
+        <property name="initialPoolSize" value="${server.db.poolsize.init}"/>
+        <property name="maxIdleTime" value="${server.db.maxIdleTime}"/>
+    </bean>
+    <!-- session factory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <!-- scan model package -->
+        <property name="packagesToScan" value="com.oncore.*.model"/>
+        <!-- set dataSource -->
+        <property name="dataSource" ref="serverHibernateDataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">${server.db.hibernate.hbm2ddl.auto}</prop>
+                <prop key="hibernate.dialect">${server.db.hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${server.db.hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">${server.db.hibernate.format_sql}</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- transaction manager -->
+    <bean id="hibernateTransactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!-- open annotation for transaction manager -->
+    <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
+</beans>
