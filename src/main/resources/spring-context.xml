@@ -72,6 +72,7 @@
     <bean id="reportTemplateMessageListener"
           class="com.oncore.middleware.jms.message.consumer.ReportTemplateMessageListener">
         <property name="upLoader" ref="aWSUploader"></property>
+        <property name="downLoader" ref="awsDownloader"></property>
     </bean>
 
     <bean id="reportUploaderDestination" class="org.apache.activemq.command.ActiveMQQueue">

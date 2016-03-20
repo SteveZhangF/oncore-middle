@@ -34,8 +34,6 @@
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="connectionFactory"/>
     </bean>
-
-
     <!--message queue used to create mapping and groovy files start-->
     <bean id="fileCreatorDestination" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg>

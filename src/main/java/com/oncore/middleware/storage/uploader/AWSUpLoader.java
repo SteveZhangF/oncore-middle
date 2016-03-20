@@ -43,8 +43,8 @@ public class AWSUpLoader extends UpLoader {
             awsSecretKey = commonConfigure.getAws_secret_key();
             bucketName = commonConfigure.getAws_report_template_bucket_name();
         } else {
-            awsAccessKey = "AKIAI5GQXM22GPHIJTPA";
-            awsSecretKey = "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";
+            awsAccessKey = "AKIAIMYXQ2OM3AYPO7MQ";
+            awsSecretKey = "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";
             bucketName = "oncore-template";
         }
 
@@ -100,6 +100,11 @@ public class AWSUpLoader extends UpLoader {
         } catch (IOException e) {
             log.error(e.getMessage());
         }
+    }
+
+    public static void main(String[] args){
+        AWSUpLoader awsUpLoader = new AWSUpLoader(null);
+        awsUpLoader.upload("access_test","accesstest");
     }
 
 }
