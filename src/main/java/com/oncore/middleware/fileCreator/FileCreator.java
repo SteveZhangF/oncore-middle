@@ -16,6 +16,21 @@ import java.util.Map;
 /**
  * Created by steve on 3/6/16.
  */
+
+/**
+ * file creator
+ * to create the related file based on T
+ *
+ * all file creator should extends this class and implement
+ *  getDestination(T t): the generated path
+ *  getTemplate() : the template
+ *  getElementRoot(T t): the element root map.
+ *
+ * invoke:
+ *  fileCreator.createFile(t);
+ *
+ *
+ * */
 public abstract class FileCreator<T> {
 
     Log log = LogFactory.getLog(FileCreator.class);

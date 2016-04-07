@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by steve on 3/4/16.
  */
 @Configuration
-public class CommonConfigure {
+public class  CommonConfigure {
 
 
     @Value("${base_dir}")
@@ -22,14 +22,62 @@ public class CommonConfigure {
     @Value("${template.hibernate_mapping_file}")
     private String template_hibernate_mapping_file;
 
+
+
     @Value("${generated_file_destination.hibernate_mapping_file}")
     private String generated_file_destination_hibernate_mapping_file;
     @Value("${generated_file_destination.groovy_dao_file}")
     private String generated_file_destination_groovy_dao_file;
+
+    @Value("${generated_file_destination_report_html_file}")
+    private String generated_file_destination_report_html_file;
+
+    @Value("${generated_file_destination_entity_html_file}")
+    private String generated_file_destination_entity_html_file;
+
+
+    public String getGenerated_file_destination_entity_html_file() {
+        return generated_file_destination_entity_html_file;
+    }
+
+    public void setGenerated_file_destination_entity_html_file(String generated_file_destination_entity_html_file) {
+        this.generated_file_destination_entity_html_file = generated_file_destination_entity_html_file;
+    }
+
+    public String getGenerated_file_destination_report_html_file() {
+        return generated_file_destination_report_html_file;
+    }
+
+    public void setGenerated_file_destination_report_html_file(String generated_file_destination_report_html_file) {
+        this.generated_file_destination_report_html_file = generated_file_destination_report_html_file;
+    }
+
     @Value("${template.template_groovy_dao_file}")
     private String template_groovy_dao_file;
     @Value("${template.template_report_groovy_dao_file}")
     private String template_report_groovy_dao_file;
+    @Value("${template.template_report_html_file}")
+    private String template_report_html_file;
+    @Value("${template.template_entity_html_file}")
+    private String template_entity_html_file;
+    @Value("${template.template_entity_triggler_file}")
+    private String template_entity_triggler_file;
+
+    public String getTemplate_entity_triggler_file() {
+        return template_entity_triggler_file;
+    }
+
+    public void setTemplate_entity_triggler_file(String template_entity_triggler_file) {
+        this.template_entity_triggler_file = template_entity_triggler_file;
+    }
+
+    public String getTemplate_entity_html_file() {
+        return template_entity_html_file;
+    }
+
+    public void setTemplate_entity_html_file(String template_entity_html_file) {
+        this.template_entity_html_file = template_entity_html_file;
+    }
 
     @Value("${qiniu_access_key}")
     private String qiniu_access_key;
@@ -179,5 +227,13 @@ public class CommonConfigure {
 
     public void setTemplate_report_groovy_dao_file(String template_report_groovy_dao_file) {
         this.template_report_groovy_dao_file = template_report_groovy_dao_file;
+    }
+
+    public String getTemplate_report_html_file() {
+        return template_report_html_file;
+    }
+
+    public void setTemplate_report_html_file(String template_report_html_file) {
+        this.template_report_html_file = template_report_html_file;
     }
 }

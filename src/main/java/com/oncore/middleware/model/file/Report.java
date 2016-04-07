@@ -2,6 +2,7 @@ package com.oncore.middleware.model.file;
 
 
 import com.oncore.middleware.model.TableElement;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class Report extends FileElement implements TableElement {
     private List<ReportField> fields = new ArrayList<>();
 
 
-    public void addField(ReportField field){
+    public void addField(ReportField field) {
         this.fields.add(field);
     }
 

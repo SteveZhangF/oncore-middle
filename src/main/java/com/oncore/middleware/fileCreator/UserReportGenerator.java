@@ -13,6 +13,10 @@ import java.util.Map;
 /**
  * Created by steve on 3/9/16.
  */
+
+/**
+ * moved to user project
+ * */
 @Component
 public class UserReportGenerator extends FileCreator<TableElement> {
 

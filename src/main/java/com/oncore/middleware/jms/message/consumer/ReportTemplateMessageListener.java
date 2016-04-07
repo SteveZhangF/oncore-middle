@@ -12,6 +12,10 @@ import java.io.IOException;
 /**
  * Created by steve on 3/18/16.
  */
+
+/**
+ * upload the report template to cloud storage (S3)
+ * */
 public class ReportTemplateMessageListener implements MessageListener {
 
     private UpLoader upLoader;
@@ -43,7 +47,6 @@ public class ReportTemplateMessageListener implements MessageListener {
             String reportTableName = root.get("reportTableName").asText();
             String content = root.get("content").asText();
             upLoader.upload(content,reportTableName);
-            System.out.println(downLoader.getDownloadUrl(reportTableName));
 
         } catch (JMSException e) {
             e.printStackTrace();

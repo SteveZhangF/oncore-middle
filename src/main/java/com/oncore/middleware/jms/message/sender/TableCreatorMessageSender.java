@@ -13,7 +13,7 @@ import java.io.File;
 /**
  * Created by steve on 3/18/16.
  */
-@Component
+@Component("tableCreatorMessageSender")
 public class TableCreatorMessageSender extends MessageSender<File> {
 
     @Autowired

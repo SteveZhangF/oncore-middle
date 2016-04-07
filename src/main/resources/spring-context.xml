@@ -29,11 +29,20 @@
         <property name="maxConnections" value="10"/>
     </bean>
     <bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="brokerURL" value="tcp://localhost:61616?jms.blobTransferPolicy.defaultUploadUrl=http://localhost:8161/fileserver/"/>
     </bean>
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="connectionFactory"/>
     </bean>
+
+    <!--for sending html file-->
+    <bean id="htmlFileDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg>
+            <value>html_file_destination</value>
+        </constructor-arg>
+    </bean>
+
+
     <!--message queue used to create mapping and groovy files start-->
     <bean id="fileCreatorDestination" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg>

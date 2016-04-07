@@ -19,7 +19,7 @@ public class ReportField extends Element {
 
     private boolean ifNull;
 
-    private boolean isRelatedField;
+    private boolean ifRelatedField;
 
     private Field relatedField;
 
@@ -63,11 +63,11 @@ public class ReportField extends Element {
         this.ifNull = ifNull;
     }
 
-    public boolean isRelatedField() {
-        return isRelatedField;
+    public boolean isIfRelatedField() {
+        return ifRelatedField;
     }
 
-    public void setIsRelatedField(boolean isRelatedField) {
-        this.isRelatedField = isRelatedField;
+    public void setIfRelatedField(boolean ifRelatedField) {
+        this.ifRelatedField = ifRelatedField;
     }
 }

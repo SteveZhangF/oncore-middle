@@ -35,7 +35,7 @@ public class ReportGroovyFileCreator extends FileCreator<Report> {
         if (!file.exists()) {
             file.mkdirs();
         }
-        String mappingFileName = t.getName() + ".groovy";
+        String mappingFileName = t.getName().replace(" ","_") + ".groovy";
         file = new File(commonConfigure.getBaseDir()+"/"+commonConfigure.getGenerated_file_destination_groovy_dao_file() + "/" + t.getHbmPath() + "/" + mappingFileName);
         if (file.exists()) {
             file.delete();
@@ -51,6 +51,7 @@ public class ReportGroovyFileCreator extends FileCreator<Report> {
             Template template = configuration.getTemplate(commonConfigure.getTemplate_report_groovy_dao_file());
             return template;
         } catch (IOException e) {
+            e.printStackTrace();
             log.error("reading report groovy dao template file error");
             return null;
         }
@@ -64,19 +65,19 @@ public class ReportGroovyFileCreator extends FileCreator<Report> {
         List relatedFields = new ArrayList<>();
         List nonRelatedFields = new ArrayList<>();
         for(ReportField field:report.getFields()){
-            if(!field.isRelatedField()){
+            if(!field.isIfRelatedField()){
                 nonRelatedFields.add(field);
             }else{
                 Map map=new HashMap<>();
-                map.put("tableName",field.getRelatedField().getEntity().getTableName());
+                map.put("tableName",field.getRelatedField().getTableName());
                 map.put("field_name",field.getRelatedField().getName());
-                map.put("name",field.getName());
+                map.put("name",field.getName().replace(" ","_"));
                 relatedFields.add(map);
             }
         }
         root.put("fields",report.getFields());
         root.put("tableName",tableName);
-        root.put("name",name);
+        root.put("name",name.replace(" ","_"));
         root.put("relatedFields",relatedFields);
         root.put("nonRelatedFields",nonRelatedFields);
         return root;

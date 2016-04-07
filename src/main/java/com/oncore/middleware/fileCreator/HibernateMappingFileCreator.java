@@ -61,3 +61,4 @@ public class HibernateMappingFileCreator extends FileCreator<TableElement> {
         return root;
     }
 }
+

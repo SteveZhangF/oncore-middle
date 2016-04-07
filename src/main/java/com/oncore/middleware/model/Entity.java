@@ -16,6 +16,7 @@ public class Entity extends Element implements TableElement {
 
     private List<Field> fields = new ArrayList<>();
 
+
     public String getHbmPath() {
         return hbmPath;
     }
@@ -40,6 +41,10 @@ public class Entity extends Element implements TableElement {
     private boolean report;
     public boolean isReport() {
         return false;
+    }
+
+    public void setReport(boolean report) {
+        this.report = report;
     }
 
     public void setFields(List<Field> fields) {

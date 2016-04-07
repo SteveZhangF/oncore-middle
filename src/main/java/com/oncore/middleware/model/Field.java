@@ -15,6 +15,16 @@ public class Field extends Element {
 
     private Entity entity;
 
+    private String tableName;
+
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
     public Entity getEntity() {
         return entity;
     }

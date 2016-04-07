@@ -1,4 +1,5 @@
 com/oncore/middleware/fileCreator/GroovyFileCreator.class
+com/oncore/middleware/fileCreator/TriggleFileCreator.class
 com/oncore/middleware/model/file/FileElement.class
 com/oncore/middleware/fileCreator/FileCreator.class
 com/oncore/middleware/jms/message/sender/TableCreatorMessageSender.class
@@ -6,6 +7,7 @@ com/oncore/middleware/fileCreator/HibernateMappingFileCreator.class
 com/oncore/middleware/storage/downloader/DownLoader.class
 com/oncore/middleware/storage/downloader/AWSDownloader$1.class
 com/oncore/middleware/fileCreator/ReportGroovyFileCreator.class
+com/oncore/middleware/fileCreator/ReportHtmlFileCreator.class
 com/oncore/middleware/model/TableElement.class
 com/oncore/middleware/storage/uploader/UpLoader.class
 com/oncore/middleware/fileCreator/UserReportGenerator.class
@@ -13,9 +15,12 @@ com/oncore/middleware/model/Entity.class
 com/oncore/middleware/jms/message/consumer/TableCreatorMessageListener.class
 com/oncore/middleware/storage/uploader/AWSUpLoader$1.class
 com/oncore/middleware/model/Field.class
+com/oncore/middleware/fileCreator/EntityHtmlFileCreator.class
 com/oncore/middleware/model/Element.class
 com/oncore/middleware/model/file/ReportField.class
+com/oncore/middleware/jms/message/sender/HtmlFileMessageSender$1.class
 com/oncore/middleware/model/ReportElement.class
+com/oncore/middleware/jms/message/sender/HtmlFileMessageSender.class
 com/oncore/middleware/jms/message/sender/MessageSender.class
 com/oncore/middleware/CommonConfigure.class
 com/oncore/middleware/storage/downloader/AWSDownloader.class
@@ -24,5 +29,6 @@ com/oncore/middleware/jms/message/consumer/ReportTemplateMessageListener.class
 com/oncore/middleware/storage/uploader/AWSUpLoader.class
 com/oncore/middleware/model/file/Report.class
 com/oncore/middleware/jms/message/consumer/FileCreatorMessageListener.class
+com/oncore/middleware/jms/message/FileType.class
 com/oncore/middleware/MiddleWareRunner.class
 com/oncore/middleware/model/file/Folder.class

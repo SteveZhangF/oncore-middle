@@ -1,12 +1,15 @@
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/model/Element.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/jms/message/sender/MessageSender.java
+/Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/jms/message/FileType.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/model/file/FileElement.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/storage/downloader/AWSDownloader.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/storage/uploader/UpLoader.java
+/Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/fileCreator/TriggleFileCreator.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/jms/message/sender/TableCreatorMessageSender.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/CommonConfigure.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/fileCreator/UserReportGenerator.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/jms/message/consumer/FileCreatorMessageListener.java
+/Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/jms/message/sender/HtmlFileMessageSender.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/model/TableElement.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/storage/downloader/DownLoader.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/fileCreator/FileCreator.java
@@ -19,6 +22,8 @@
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/model/Field.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/fileCreator/GroovyFileCreator.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/model/file/Report.java
+/Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/fileCreator/EntityHtmlFileCreator.java
+/Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/fileCreator/ReportHtmlFileCreator.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/fileCreator/ReportGroovyFileCreator.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/jms/message/consumer/TableCreatorMessageListener.java
 /Users/steve/OncoreMiddleWare/src/main/java/com/oncore/middleware/jms/message/consumer/ReportTemplateMessageListener.java

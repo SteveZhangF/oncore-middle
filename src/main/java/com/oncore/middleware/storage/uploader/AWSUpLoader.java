@@ -43,8 +43,8 @@ public class AWSUpLoader extends UpLoader {
             awsSecretKey = commonConfigure.getAws_secret_key();
             bucketName = commonConfigure.getAws_report_template_bucket_name();
         } else {
-            awsAccessKey = "AKIAIMYXQ2OM3AYPO7MQ";
-            awsSecretKey = "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";
+            awsAccessKey = "AKIAJ7ZCYOJ3575ULHMA";
+            awsSecretKey = "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";
             bucketName = "oncore-template";
         }
 
@@ -104,7 +104,7 @@ public class AWSUpLoader extends UpLoader {
 
     public static void main(String[] args){
         AWSUpLoader awsUpLoader = new AWSUpLoader(null);
-        awsUpLoader.upload("access_test","accesstest");
+        awsUpLoader.upload("access_test","report_updatedmodule_1458434245796");
     }
 
 }

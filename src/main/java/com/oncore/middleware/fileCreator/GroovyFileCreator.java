@@ -30,7 +30,7 @@ public class GroovyFileCreator extends FileCreator<TableElement> {
         if (!file.exists()) {
             file.mkdirs();
         }
-        String mappingFileName = t.getName() + ".groovy";
+        String mappingFileName = t.getName().replace(" ","_") + ".groovy";
         file = new File(commonConfigure.getBaseDir()+"/"+commonConfigure.getGenerated_file_destination_groovy_dao_file() + "/" + t.getHbmPath() + "/" + mappingFileName);
         if (file.exists()) {
             file.delete();
@@ -54,7 +54,7 @@ public class GroovyFileCreator extends FileCreator<TableElement> {
     @Override
     protected Map getElementRoot(TableElement o) {
         Map root = new HashMap<>();
-        root.put("name", o.getName());
+        root.put("name", o.getName().replace(" ","_"));
         root.put("tableName", o.getTableName());
         root.put("fields", o.getFields());
         return root;
